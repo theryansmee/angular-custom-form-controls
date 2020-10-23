@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "angular-custom-form-controls"
+    }
+  },
+  "defaultProject": "angular-custom-form-controls",
+  "cli": {
+    "analytics": "356fff1d-dac0-4755-b162-5f845216e41b"
+  }
 }

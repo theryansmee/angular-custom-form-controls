@@ -1,0 +1,111 @@
+<div class="registration-page-wrapper">
+	<form class="registration-form" autocomplete="off"
+		*ngIf="registrationFrom"
+		[formGroup]="registrationFrom"
+		(ngSubmit)="submitRegistrationForm()">
+
+		<h1>
+			Register:
+		</h1>
+
+		<div class="form-row">
+			<label class="form-label" for="name">
+				<span class="is-required">
+					Name
+				</span>
+				<span class="field-error"
+					*ngIf="nameField?.hasError( 'required' )
+						&& nameField?.dirty">
+					This is a required field.
+				</span>
+				<span class="field-error"
+					*ngIf="nameField?.hasError( 'noEmptyString' )
+						&& nameField?.dirty">
+					Please enter a valid name.
+				</span>
+			</label>
+			<input class="form-element" type="text" name="name" id="name"
+		        [ngClass]="{
+		            'has-error':
+		                nameField?.invalid
+		                && nameField?.dirty
+		        }"
+				formControlName="name">
+		</div>
+
+		<div class="form-row">
+			<label class="form-label" for="email">
+				<span class="is-required">
+					email
+				</span>
+				<span class="field-error"
+					*ngIf="emailField?.hasError( 'required' )
+						&& emailField?.dirty">
+					This is a required field.
+				</span>
+				<span class="field-error"
+					*ngIf="emailField?.hasError( 'normalEmailRule' )
+						&& emailField?.dirty">
+					Email format is invalid.
+				</span>
+			</label>
+			<input class="form-element" type="text" name="email" id="email"
+				[ngClass]="{
+		            'has-error':
+		                emailField?.invalid
+		                && emailField?.dirty
+		        }"
+				formControlName="email">
+		</div>
+
+		<div class="form-row">
+			<label class="form-label" for="password">
+				<span class="is-required">
+					Password
+				</span>
+				<span class="field-error"
+					*ngIf="passwordField?.hasError( 'required' )
+						&& passwordField?.dirty">
+					This is a required field.
+				</span>
+				<span class="field-error"
+					*ngIf="passwordField?.hasError( 'noWhitespaceRequired' )
+						&& passwordField?.dirty">
+					No spaces allowed.
+				</span>
+			</label>
+			<div>
+				<input class="form-element" name="password" id="password"
+					[ngClass]="{
+						'has-error':
+							passwordField?.invalid
+							&& passwordField?.dirty
+					}"
+					[type]="passwordFieldType"
+					formControlName="password">
+
+				<button type="button"
+					(click)="togglePasswordVisible()">
+					o
+				</button>
+			</div>
+		</div>
+
+		<div class="form-row">
+			<label class="form-label" for="favouriteHexCode">
+				<span>
+					Favourite hex code
+				</span>
+			</label>
+			<input class="form-element" type="text" name="favouriteHexCode" id="favouriteHexCode"
+		        formControlName="favouriteHexCode">
+		</div>
+
+		<div class="button-row">
+			<button class="button-success" type="submit"
+		        [disabled]="registrationFrom?.invalid">
+				Submit
+			</button>
+		</div>
+	</form>
+</div>

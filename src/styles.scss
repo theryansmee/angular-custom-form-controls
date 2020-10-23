@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: sans-serif;
+}
+
+
+// SCSS Routing
+@import "styles/normalize";
+@import "styles/form";
+@import "styles/button";
