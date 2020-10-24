@@ -29,10 +29,6 @@ input {
 
 .form-row {
 	padding-bottom: 1rem;
-
-	&:last-of-type {
-		padding-bottom: 0;
-	}
 }
 
 .form-element {
@@ -46,6 +42,7 @@ input {
 
 	&.has-error {
 		background: rgba( $errorColour, 0.2 );
+		border-right-color: $errorColour;
 		border-bottom-color: $errorColour;
 	}
 }
