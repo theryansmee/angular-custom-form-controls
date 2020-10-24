@@ -32,3 +32,23 @@ h1 {
 	margin-top: 0;
 	font-weight: 200;
 }
+
+.password-input-wrapper {
+	position: relative;
+
+	.form-element {
+		padding-right: 2rem;
+	}
+}
+
+.toggle-password-visibility-button {
+	background: rgba( #efefef, 0.4 );
+	width: 2.5rem;
+	border: none;
+	display: block;
+	position: absolute;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	cursor: pointer;
+}

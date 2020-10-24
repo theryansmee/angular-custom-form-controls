@@ -74,7 +74,7 @@
 					No spaces allowed.
 				</span>
 			</label>
-			<div>
+			<div class="password-input-wrapper">
 				<input class="form-element" name="password" id="password"
 					[ngClass]="{
 						'has-error':
@@ -84,9 +84,16 @@
 					[type]="passwordFieldType"
 					formControlName="password">
 
-				<button type="button"
+				<button type="button" class="toggle-password-visibility-button"
+			        [title]="passwordFieldType === 'text'
+						? 'Hide password'
+						: 'Show password'"
 					(click)="togglePasswordVisible()">
-					o
+					<fa-icon
+						[icon]="passwordFieldType === 'text'
+							? ['far', 'eye-slash']
+							: ['far', 'eye']">
+					</fa-icon>
 				</button>
 			</div>
 		</div>

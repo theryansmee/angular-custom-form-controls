@@ -17,7 +17,7 @@ export class RegistrationFormComponent implements OnInit {
 
 	public registrationFrom: FormGroup;
 
-	public passwordFieldType: string = 'text';
+	public passwordFieldType: string = 'password';
 
 	get nameField (): FormControl {
 		return this.registrationFrom.get( 'name' ) as FormControl;
