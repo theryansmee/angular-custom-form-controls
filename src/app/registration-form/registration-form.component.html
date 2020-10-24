@@ -36,7 +36,7 @@
 		<div class="form-row">
 			<label class="form-label" for="email">
 				<span class="is-required">
-					email
+					Email
 				</span>
 				<span class="field-error"
 					*ngIf="emailField?.hasError( 'required' )
@@ -74,7 +74,7 @@
 					No spaces allowed.
 				</span>
 			</label>
-			<div class="password-input-wrapper">
+			<div class="input-with-button-wrapper">
 				<input class="form-element" name="password" id="password"
 					[ngClass]="{
 						'has-error':
@@ -101,11 +101,22 @@
 		<div class="form-row">
 			<label class="form-label" for="favouriteHexCode">
 				<span>
-					Favourite hex code
+					Favourite hex colour
 				</span>
 			</label>
-			<input class="form-element" type="text" name="favouriteHexCode" id="favouriteHexCode"
-		        formControlName="favouriteHexCode">
+
+			<div class="input-with-button-wrapper">
+				<input class="form-element" type="text" name="favouriteHexCode" id="favouriteHexCode" maxlength="7"
+			        formControlName="favouriteHexCode">
+
+				<div class="hex-colour-display"
+					[ngStyle]="{
+						background: favouriteHexCodeValue !== ''
+							? favouriteHexCodeValue
+							: 'transparent'
+					}">
+				</div>
+			</div>
 		</div>
 
 		<div class="button-row">

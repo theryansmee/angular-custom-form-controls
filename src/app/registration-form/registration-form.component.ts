@@ -4,9 +4,6 @@ import { EmailValidators, UniversalValidators } from 'ngx-validators';
 import { RegistrationRequestModel } from './registration-request.model';
 
 
-
-
-
 @Component({
 	selector: 'app-registration-form',
 	templateUrl: './registration-form.component.html',
@@ -31,6 +28,9 @@ export class RegistrationFormComponent implements OnInit {
 		return this.registrationFrom.get( 'password' ) as FormControl;
 	}
 
+	get favouriteHexCodeValue (): string {
+		return this.registrationFrom.get( 'favouriteHexCode' ).value;
+	}
 
 	constructor() { }
 

@@ -33,11 +33,11 @@ h1 {
 	font-weight: 200;
 }
 
-.password-input-wrapper {
+.input-with-button-wrapper {
 	position: relative;
 
 	.form-element {
-		padding-right: 2rem;
+		padding-right: 2.75rem;
 	}
 }
 
@@ -52,3 +52,14 @@ h1 {
 	bottom: 0;
 	cursor: pointer;
 }
+
+.hex-colour-display {
+	width: 2rem;
+	border-left: 1px solid #c9c9c9;
+	position: absolute;
+	right: 2px;
+	top: 2px;
+	bottom: 2px;
+}
+
+
