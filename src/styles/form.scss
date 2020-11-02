@@ -65,3 +65,11 @@ input {
 	color: $errorColour;
 	font-style: italic;
 }
+
+.input-with-button-wrapper {
+	position: relative;
+
+	.form-element {
+		padding-right: 2.75rem;
+	}
+}
