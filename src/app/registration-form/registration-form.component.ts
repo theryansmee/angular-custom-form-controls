@@ -15,11 +15,6 @@ export class RegistrationFormComponent implements OnInit {
 	public registrationFrom: FormGroup;
 
 
-	get favouriteHexCodeValue (): string {
-		return this.registrationFrom.get( 'favouriteHexCode' ).value;
-	}
-
-
 	constructor () { }
 
 
