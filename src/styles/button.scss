@@ -1,0 +1,86 @@
+.button-row {
+	width: 100%;
+	padding-top: 1.5rem;
+	display: flex;
+	justify-content: flex-end;
+
+	button ~ button {
+		margin-left: 0.75rem;
+	}
+}
+
+%button {
+	padding: 0.75rem 1rem;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 0;
+	box-shadow: none;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+
+	&:disabled,
+	&:disabled:hover {
+		background: #efefef!important;
+		border-color: darken( #efefef, 15 );
+		cursor: not-allowed;
+
+		color: darken( #efefef, 15 );
+		font-style: italic;
+
+		.button-icon {
+			fill: darken( #efefef, 15 );
+		}
+	}
+}
+
+.button-success {
+	@extend %button;
+	background: #0CCE6B;
+	border-color: darken( #0CCE6B, 5 );
+
+	color: #fff;
+
+	.button-icon {
+		fill: #fff;
+	}
+
+	&:hover,
+	&:focus {
+		background: darken( #0CCE6B, 2 );
+	}
+}
+
+.button-danger {
+	@extend %button;
+	background: #DB3A34;
+	padding: 0.75rem;
+	border-color: darken( #DB3A34, 5 );
+
+	color: #fff;
+
+	.button-icon {
+		fill: #fff;
+	}
+
+	&:hover,
+	&:focus {
+		background: darken( #DB3A34, 2 );
+	}
+}
+
+.button-icon {
+	width: 0.75rem;
+	height: 0.75rem;
+	margin-left: 0.25rem;
+
+	&.large {
+		height: 1.25rem;
+		width: 1.25rem;
+		margin-left: 0;
+	}
+}
+
+.button-icon {
+	height: 1rem;
+}

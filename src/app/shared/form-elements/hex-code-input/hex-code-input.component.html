@@ -1,0 +1,35 @@
+<div class="form-row">
+	<label class="form-label"
+		[for]="fieldName">
+		<span>
+			{{ label }}
+		</span>
+
+		<app-field-errors
+			[formField]="formField">
+		</app-field-errors>
+	</label>
+
+	<div class="input-with-button-wrapper">
+		<input class="form-element" type="text" maxlength="7"
+			[ngClass]="{
+				'has-error':
+					formField?.invalid
+					&& formField?.dirty
+			}"
+			[id]="fieldName"
+			[name]="fieldName"
+			[value]="value"
+			[disabled]="isDisabled"
+			(input)="onChange( $event )"
+			(blur)="touched()">
+
+		<div class="hex-colour-display"
+			[ngStyle]="{
+				background: formFieldValue !== ''
+					? formFieldValue
+					: 'transparent'
+			}">
+		</div>
+	</div>
+</div>

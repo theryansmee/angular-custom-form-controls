@@ -1,0 +1,75 @@
+$errorColour: #DB3A34;
+
+.form-wrapper {
+	background: #fff;
+	width: 600px;
+	padding: 2rem 2rem;
+	border: 3px solid #022248;
+	margin: auto;
+	box-shadow: 0 1px 2px 2px rgba( #000, 0.1 );
+}
+
+input {
+	border: unset;
+}
+
+.form-row-outer-wrapper {
+	display: flex;
+}
+
+.input-section {
+	flex: 1;
+}
+
+.action-panel {
+	padding: 1rem 0 1rem 1rem;
+	display: flex;
+	align-items: center;
+}
+
+.form-row {
+	padding-bottom: 1rem;
+}
+
+.form-element {
+	width: 100%;
+	padding: 0.5rem;
+	border-top: 2px solid #022248;
+	border-left: 2px solid #022248;
+	border-bottom: 2px solid #e6e6e6;
+	border-right: 2px solid #e6e6e6;
+	border-radius: 0;
+
+	&.has-error {
+		background: rgba( $errorColour, 0.2 );
+		border-right-color: $errorColour;
+		border-bottom-color: $errorColour;
+	}
+}
+
+.form-label {
+	display: inline-block;
+	margin-bottom: 0.25rem;
+
+	.is-required {
+		&:after {
+			content: '*';
+
+			color: $errorColour;
+		}
+	}
+}
+
+.field-error,
+.form-error {
+	color: $errorColour;
+	font-style: italic;
+}
+
+.input-with-button-wrapper {
+	position: relative;
+
+	.form-element {
+		padding-right: 2.75rem;
+	}
+}

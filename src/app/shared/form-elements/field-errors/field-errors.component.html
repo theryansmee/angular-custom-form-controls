@@ -1,0 +1,22 @@
+<ng-container *ngIf="formField?.dirty">
+	<span class="field-error"
+		*ngIf="formField?.hasError( 'required' )">
+		This is a required field.
+	</span>
+
+	<span class="field-error"
+		*ngIf="formField?.hasError( 'noEmptyString' )">
+		Please enter a valid name.
+	</span>
+
+	<span class="field-error"
+		*ngIf="formField?.hasError( 'normalEmailRule' )">
+		Email format is invalid.
+	</span>
+
+	<span class="field-error"
+		*ngIf="formField?.hasError( 'noWhitespaceRequired' )">
+		No spaces allowed.
+	</span>
+</ng-container>
+

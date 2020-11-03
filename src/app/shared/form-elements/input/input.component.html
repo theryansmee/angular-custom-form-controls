@@ -1,0 +1,25 @@
+<div class="form-row">
+	<label class="form-label"
+		[for]="fieldName">
+
+		<span class="is-required">
+			{{ label }}
+		</span>
+
+		<app-field-errors
+			[formField]="formField">
+		</app-field-errors>
+	</label>
+	<input type="text" class="form-element"
+        [ngClass]="{
+            'has-error':
+                formField?.invalid
+                && formField?.dirty
+        }"
+		[id]="fieldName"
+		[name]="fieldName"
+		[value]="value"
+		[disabled]="isDisabled"
+		(input)="onChange( $event )"
+		(blur)="touched()">
+</div>
