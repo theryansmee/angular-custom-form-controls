@@ -6,19 +6,34 @@
 			{{ label }}
 		</span>
 
-		<app-field-errors
-			[formField]="formField">
-		</app-field-errors>
+		<span class="field-error"
+		*ngIf="control?.hasError( 'required' )">
+		This is a required field.
+	</span>
+
+	<span class="field-error"
+		*ngIf="control?.hasError( 'noEmptyString' )">
+		Please enter a valid name.
+	</span>
+
+	<span class="field-error"
+		*ngIf="control?.hasError( 'normalEmailRule' )">
+		Email format is invalid.
+	</span>
+
+	<span class="field-error"
+		*ngIf="control?.hasError( 'noWhitespaceRequired' )">
+		No spaces allowed.
+	</span>
 	</label>
 	<input type="text" class="form-element"
         [ngClass]="{
             'has-error':
-                formField?.invalid
-                && formField?.dirty
+                control?.invalid
+                && control?.dirty
         }"
 		[id]="fieldName"
 		[name]="fieldName"
-		[value]="value"
 		[disabled]="isDisabled"
 		(input)="onChange( $event )"
 		(blur)="touched()">

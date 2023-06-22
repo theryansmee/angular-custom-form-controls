@@ -1,5 +1,5 @@
-import { Component, forwardRef, Input } from '@angular/core';
-import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, forwardRef, Inject, Injector, Input, OnInit } from '@angular/core';
+import { ControlValueAccessor, FormControl, FormControlDirective, FormControlName, FormGroup, FormGroupDirective, NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
 
 
 @Component({
@@ -16,11 +16,12 @@ import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR } from 
 		}
 	]
 })
-export class InputComponent implements ControlValueAccessor {
+export class InputComponent implements OnInit, ControlValueAccessor {
 
+	public control: FormControl | undefined;
 
-	@Input()
-	public parentForm: FormGroup;
+	// @Input()
+	// public parentForm: FormGroup;
 
 	@Input()
 	public fieldName: string;
@@ -37,16 +38,37 @@ export class InputComponent implements ControlValueAccessor {
 	public isDisabled: boolean;
 
 
-	get formField (): FormControl {
-		return this.parentForm?.get( this.fieldName ) as FormControl;
+	// get formField (): FormControl {
+	// 	return this.parentForm?.get( this.fieldName ) as FormControl;
+	// }
+
+
+	constructor (@Inject(Injector) private injector: Injector) { }
+
+	ngOnInit(): void {
+		this.setupControl();
 	}
 
+	private setupControl(): void {
+		try {
+			const formControl = this.injector.get(NgControl);
 
-	constructor () { }
+			switch(formControl.constructor) {
+				case FormControlName:
+					this.control = this.injector.get(FormGroupDirective).getControl(formControl as FormControlName);
+					break;
+				default:
+					this.control = (formControl as FormControlDirective).form as FormControl;
+					break;
+			}
+		} catch (err) {
+			this.control = new FormControl('');
+		}
 
+	}
 
 	public writeValue ( value: string ): void {
-		this.value = value;
+		this.control ? this.control.setValue(value) : this.control = new FormControl(value);
 	}
 
 	public onChange ( event: Event ): void {
